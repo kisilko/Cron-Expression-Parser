@@ -1,16 +1,11 @@
 package com.github.kisilko.parser;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class MinuteParser extends AbstractCronFieldParser {
 
-    protected int minValue = 0;
-    protected int maxValue = 59;
+    private final static int MIN_VALUE = 0;
+    private final static int MAX_VALUE = 59;
 
     public MinuteParser() {
-        super(0, 59);
+        super(MIN_VALUE, MAX_VALUE);
     }
 }

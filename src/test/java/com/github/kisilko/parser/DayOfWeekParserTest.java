@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -14,18 +13,18 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-class MinuteParserTest {
+class DayOfWeekParserTest {
 
-    private final CronFieldParser cronFieldParser = new MinuteParser();
+    private final CronFieldParser cronFieldParser = new DayOfWeekParser();
 
     static Stream<Arguments> validDataProvider() {
         return Stream.of(
-            arguments("*", IntStream.rangeClosed(0, 59).boxed().toList()),
-            arguments("*/1", IntStream.rangeClosed(0, 59).boxed().toList()),
-            arguments("*/15", Arrays.asList(0, 15, 30, 45)),
-            arguments("1,15", Arrays.asList(1, 15)),
-            arguments("5-10", Arrays.asList(5, 6, 7, 8, 9, 10)),
-            arguments("45", List.of(45))
+                arguments("*", IntStream.rangeClosed(0, 6).boxed().toList()),
+                arguments("*/1", IntStream.rangeClosed(0, 6).boxed().toList()),
+                arguments("*/2", Arrays.asList(0, 2, 4, 6)),
+                arguments("1,3,4", Arrays.asList(1, 3, 4)),
+                arguments("2-5", Arrays.asList(2, 3, 4, 5)),
+                arguments("0", List.of(0))
         );
     }
     @ParameterizedTest
@@ -40,7 +39,7 @@ class MinuteParserTest {
                 arguments("*/75"),
                 arguments("1,70"),
                 arguments("5-10-15"),
-                arguments("60"),
+                arguments("7"),
                 arguments("-1"),
                 arguments("\\"),
                 arguments("_1")

@@ -1,10 +1,11 @@
 package com.github.kisilko.parser;
 
-import java.util.List;
+public class DayOfWeekParser extends AbstractCronFieldParser {
 
-public class DayOfWeekParser {
+    private final static int MIN_VALUE = 0;
+    private final static int MAX_VALUE = 6;
 
-    public List<Integer> parse(String dayOfWeek) {
-        return null;
+    public DayOfWeekParser() {
+        super(MIN_VALUE, MAX_VALUE);
     }
 }

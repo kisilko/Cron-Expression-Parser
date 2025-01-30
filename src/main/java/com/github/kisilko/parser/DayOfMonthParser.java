@@ -1,10 +1,12 @@
 package com.github.kisilko.parser;
 
-import java.util.List;
 
-public class DayOfMonthParser {
+public class DayOfMonthParser extends AbstractCronFieldParser {
 
-    public List<Integer> parse(String dayOfMonth) {
-        return null;
+    private final static int MIN_VALUE = 1;
+    private final static int MAX_VALUE = 31;
+
+    public DayOfMonthParser() {
+        super(MIN_VALUE, MAX_VALUE);
     }
 }

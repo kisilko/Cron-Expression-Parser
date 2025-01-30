@@ -1,10 +1,11 @@
 package com.github.kisilko.parser;
 
-import java.util.List;
+public class HourParser extends AbstractCronFieldParser {
 
-public class HourParser {
+    private final static int MIN_VALUE = 0;
+    private final static int MAX_VALUE = 23;
 
-    public List<Integer> parse(String hour) {
-        return null;
+    public HourParser() {
+        super(MIN_VALUE, MAX_VALUE);
     }
 }

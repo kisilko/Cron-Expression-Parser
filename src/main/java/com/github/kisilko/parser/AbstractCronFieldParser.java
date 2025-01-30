@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 public abstract class AbstractCronFieldParser implements CronFieldParser {
 
     private final Pattern FIELD_REGEX = Pattern.compile("^[0-9*/,-]+$");
-    protected final int minValue;
-    protected final int maxValue;
+    private final int minValue;
+    private final int maxValue;
     protected AbstractCronFieldParser(int minValue, int maxValue) {
         this.minValue = minValue;
         this.maxValue = maxValue;
@@ -22,7 +22,7 @@ public abstract class AbstractCronFieldParser implements CronFieldParser {
         List<Integer> minutes = new ArrayList<>();
 
         if (fieldStr.equals("*")) {
-            for (int i = 0; i <= 59; i++) {
+            for (int i = minValue; i <= maxValue; i++) {
                 minutes.add(i);
             }
         }
@@ -31,7 +31,7 @@ public abstract class AbstractCronFieldParser implements CronFieldParser {
             int interval = Integer.parseInt(fieldStr.substring(2));
             validateAllowedRange(interval);
 
-            for (int i = 0; i <= 59; i += interval) {
+            for (int i = minValue; i <= maxValue; i += interval) {
                 minutes.add(i);
             }
         }
