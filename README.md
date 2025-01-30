@@ -43,3 +43,10 @@ or, if you want to run script from project root use
 #### CLI with gradlew
 Run from the project root directory (<i class="fas fa-exclamation-circle"></i> Important: Put the arguments in single quotes and enclose them in double quotes like this: "'...'"):
 `./gradlew run --args="'*/15 0 1,15 * 1-5 /usr/bin/find'"`
+
+
+### Running Tests
+To run the tests for this project, use the following command from the project root directory:
+```sh
+./gradlew test
+```
