@@ -11,11 +11,11 @@ public class CronExpressionParser {
     private final Pattern CRON_REGEX = Pattern.compile("""
             (?x)                                 # Free-spacing and comments regex mode
             ^                                    # Start of the string
-            (?<minute>\\S{1,10})\\s              # Capture minute
-            (?<hour>\\S{1,10})\\s                # Capture hour
-            (?<dayOfMonth>\\S{1,10})\\s          # Capture dayOfMonth
-            (?<month>\\S{1,10})                  # Capture month
-            (?<dayOfWeek>\\S{1,10})              # Capture dayOfWeek
+            (?<minute>\\S{1,180})\\s             # Capture minute
+            (?<hour>\\S{1,70})\\s                # Capture hour
+            (?<dayOfMonth>\\S{1,100})\\s         # Capture dayOfMonth
+            (?<month>\\S{1,30})\\s               # Capture month
+            (?<dayOfWeek>\\S{1,15})\\s           # Capture dayOfWeek
             (?<command>.{1,500})                 # Capture command
             $                                    # End of the string
             """);
