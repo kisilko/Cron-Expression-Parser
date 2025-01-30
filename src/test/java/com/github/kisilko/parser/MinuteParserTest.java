@@ -21,6 +21,7 @@ class MinuteParserTest {
     static Stream<Arguments> validDataProvider() {
         return Stream.of(
             arguments("*", IntStream.rangeClosed(0, 59).boxed().toList()),
+            arguments("*/1", IntStream.rangeClosed(0, 59).boxed().toList()),
             arguments("*/15", Arrays.asList(0, 15, 30, 45)),
             arguments("1,15", Arrays.asList(1, 15)),
             arguments("5-10", Arrays.asList(5, 6, 7, 8, 9, 10)),
@@ -40,7 +41,9 @@ class MinuteParserTest {
                 arguments("1,70"),
                 arguments("5-10-15"),
                 arguments("60"),
-                arguments("-1")
+                arguments("-1"),
+                arguments("\\"),
+                arguments("_1")
         );
     }
     @ParameterizedTest
