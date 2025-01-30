@@ -1,9 +1,15 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'com.github.kisilko'
 version = '1.0-SNAPSHOT'
+
+application {
+    mainClass = 'com.github.kisilko.Main'
+    applicationName = 'cron-parser'
+}
 
 repositories {
     mavenCentral()
@@ -17,4 +23,14 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.register('generateCli', Copy) {
+    from tasks.installDist
+
+    into layout.projectDirectory.dir('/cli')
+
+    eachFile { fileCopyDetails ->
+        fileCopyDetails.mode = 0755
+    }
 }

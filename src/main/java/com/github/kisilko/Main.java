@@ -13,7 +13,10 @@ public class Main {
         );
 
         try {
-            cronExpressionParser.parse(args[0]);
+            CronSchedule cronSchedule = cronExpressionParser.parse(args[0]);
+            var renderer = new CronScheduleRenderer(cronSchedule);
+            System.out.println(renderer.renderPlainText());
+
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
